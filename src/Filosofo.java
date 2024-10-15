@@ -1,10 +1,10 @@
 public class Filosofo extends Thread { // a classe Filosofo herda a funcionalidade da classe Thread
 
     // constante que define o tempo máx. que um filósofo pode gastar pensando ou comendo (em milissegundos)
-    final static int TEMPO_MAXIMO = 1000; // 1 segundo
+    final static int TEMPO_MAXIMO = 100; // 0,1 segundo
 
     // constante que define o tempo limite total que o filósofo vai executar o ciclo de pensar e comer
-    final static int TEMPO_LIMITE_EXECUCAO = 300000; // 5 minutos
+    final static int TEMPO_LIMITE_EXECUCAO = 3600000; // 1 hora
 
     Mesa mesa; // instância da classe Mesa gerencia o uso dos garfos compartilhados pelos filósofos
     int idFilosofo;
@@ -40,7 +40,7 @@ public class Filosofo extends Thread { // a classe Filosofo herda a funcionalida
             // o filósofo tenta pegar os garfos para começar a comer
             mesa.pegarGarfos(idFilosofo);
 
-            //define que o filósofo está comendo, evitar imprimir as mensagens de pensando
+            //define que o filósofo está comendo, evitar imprimir as mensagens de pensando em um
             synchronized (Filosofo.class) { //usando o Filosofo.class ccomo objeto de bloqueio
                 isComendo = true;
             }
